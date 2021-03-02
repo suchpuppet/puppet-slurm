@@ -38,7 +38,7 @@ class slurm::db {
   }
 
   # Configure Slurm DB backend
-  file { '/etc/slrum-llnl/slurmdbd.conf':
+  file { '/etc/slurm-llnl/slurmdbd.conf':
     ensure  => 'file',
     owner   => $slurm::slurm_user,
     group   => $slurm::slurm_user,
