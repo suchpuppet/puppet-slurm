@@ -9,7 +9,7 @@ SlurmctldHost=<%= host %>
 AuthType=auth/munge
 CryptoType=crypto/munge
 DisableRootJobs=<%= @disable_root_jobs %>
-EnforcePartLimits=<%= @disable_part_limits %>
+EnforcePartLimits=<%= @enforce_part_limits %>
 FirstJobId=<%= @first_job_id %>
 MaxJobId=<%= @max_job_id %>
 GroupUpdateForce=<%= @group_update_force %>
@@ -29,7 +29,7 @@ MpiDefault=<%= @mpi_default %>
 #PluginDir=
 #PlugStackConfig=
 PrivateData=<%= @private_data %>
-ProctrackType=<%= @proctrac_type %>
+ProctrackType=<%= @proctrack_type %>
 #Prolog=
 #PrologFlags=
 #PrologSlurmctld=
@@ -119,7 +119,7 @@ AccountingStorageHost=<%= @db_host %>
 AccountingStorageType=accounting_storage/slurmdbd
 #AccountingStorageUser=
 AccountingStoreJobComment=<%= @accounting_job_store_comment %>
-ClusterName=<% @cluster_name %>
+ClusterName=<%= @cluster_name %>
 #DebugFlags=
 #JobCompHost=
 #JobCompLoc=
