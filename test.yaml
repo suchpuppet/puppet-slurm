@@ -1,0 +1,15 @@
+---
+nodes:
+  node1:
+    cpus: 2
+    mem: 4096
+  node2:
+    cpus: 2
+    mem: 8192
+  node3:
+    cpus: 4
+    mem: 4096
+  node4:
+    cpus: 3
+    mem: 8192
+

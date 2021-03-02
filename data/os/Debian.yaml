@@ -1,0 +1,4 @@
+---
+slurm::install::packages:
+  'slurm-wlm': {}
+  'slurm-wlm-doc': {}

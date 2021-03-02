@@ -1,0 +1,5 @@
+---
+slurm::install::packages:
+  'slurm-slurmctld': {}
+  'slurm-slurmd': {}
+  'slurm-slurmdbd': {}

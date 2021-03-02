@@ -1,0 +1,97 @@
+---
+slurm::installation_type: 'monolithic'
+
+# Munge
+slurm::manage_munge: true
+slurm::munge_key_source: 'puppet:///modules/slurm/etc/munge/munge.key' # Use your own key, not this one
+
+# Database
+slurm::manage_db: true
+slurm::db_user: 'slurm'
+slurm::db_password: 'please-use-your-own-password'
+slurm::db_root_password: 'please-use-your-own-password'
+slurm::db_host: 'localhost'
+slurm::db_override_options:
+  mysqld:
+    'log-error': '/var/log/mysql/mariadb.log'
+    'pid-file': '/var/run/mysqld/mysqld.pid'
+  mysqld_safe:
+    'log-error': '/var/log/mysql/mariadb.log'
+
+# Config file settings
+slurm::config::disable_root_jobs: 'NO'
+slurm::config::enforce_part_limits: 'NO'
+slurm::config::first_job_id: 1
+slurm::config::max_job_id: 999999
+slurm::config::group_update_force: 0
+slurm::config::group_update_time: 600
+slurm::config::job_file_append: 0
+slurm::config::job_file_requeue: 1
+slurm::config::job_submit_plugins: 1
+slurm::config::kill_on_bad_exit: 0
+slurm::config::launch_type: 'launch/slurm'
+slurm::config::mail_prog: '/bin/mail'
+slurm::config::max_job_count: 5000
+slurm::config::max_step_count: 40000
+slurm::config::max_tasks_per_node: 128
+slurm::config::mpi_default: 'none'
+slurm::config::private_data: 'jobs'
+slurm::config::proctrack_type: 'proctrack/cgroup'
+slurm::config::propogate_prio_process: 0
+slurm::config::return_to_service: 1
+slurm::config::slurmctld_pidfile: '/var/run/slurmctld.pid'
+slurm::config::slurmctld_port: 6817
+slurm::config::slurmd_pidfile: '/var/run/slurmd.pid'
+slurm::config::slurmd_port: 6818
+slurm::config::slurmd_spool_dir: '/var/spool/slurmd'
+slurm::config::slurm_user: 'slurm'
+slurm::config::task_plugin: 'task/affinity'
+slurm::config::task_plugin_param: 'Sched'
+
+# Timers
+slurm::config::batch_start_timeout: 10
+slurm::config::complete_wait: 0
+slurm::config::get_env_timeout: 2
+slurm::config::inactive_limit: 0
+slurm::config::kill_wait: 30
+slurm::config::message_timeout: 10
+slurm::config::resv_over_run: 0
+slurm::config::min_job_age: 300
+slurm::config::over_time_limit: 0
+slurm::config::slurmctld_timeout: 120
+slurm::config::slurmd_timeout: 300
+slurm::config::unkillable_step_timeout: 60
+slurm::config::wait_time: 0
+
+# Scheduling
+slurm::config::def_mem_per_cpu: 0
+slurm::config::max_mem_per_cpu: 0
+slurm::config::scheduler_time_slice: 30
+slurm::config::scheduler_type: 'sched/backfill'
+slurm::config::select_type: 'select/cons_res'
+slurm::config::select_type_parameters: 'CR_Core'
+
+# Logging & Accounting
+slurm::config::accounting_job_store_comment: 'YES'
+slurm::config::cluster_name: 'slurm_cluster'
+slurm::config::job_comp_type: 'jobcomp/none'
+slurm::config::job_container_type: 'job_container/none'
+slurm::config::job_acct_gather_frequency: 30
+slurm::config::job_acct_gather_type: 'jobacct_gather/none'
+slurm::config::slurmctl_loglevel: 'info'
+slurm::config::slurmd_loglevel: 'info'
+
+# Compute nodes
+slurm::config::compute_nodes:
+  "%{::fqdn}":
+    CPUs: "%{::processorcount}"
+    RealMemory: "%{::memorysize_mb}"
+    State: UNKNOWN
+
+# Partitions
+slurm::config::partitions:
+  default:
+    Nodes: 'ALL'
+    Default: 'YES'
+    MaxTime: 'INFINITE'
+    State: 'UP'
