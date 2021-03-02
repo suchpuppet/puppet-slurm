@@ -37,6 +37,12 @@ class slurm::db {
     }
   }
 
+  # Install MariaDB Client
+  class { '::mysql::client':
+    package_name    => 'mariadb-client',
+    bindings_enable => true,
+  }
+
   # Configure Slurm DB backend
   file { '/etc/slurm-llnl/slurmdbd.conf':
     ensure  => 'file',
