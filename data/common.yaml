@@ -15,7 +15,7 @@ slurm::db_override_options:
   mysqld:
     'log-error': '/var/log/mysql/mariadb.log'
     'pid-file': '/var/run/mysqld/mysqld.pid'
-    'innodb_bufer_pool_size': '1024M'
+    'innodb_buffer_pool_size': '1024M'
     'innodb_log_file_size': '1024M'
     'innodb_lock_wait_timeout': '900'
   mysqld_safe:
