@@ -13,7 +13,7 @@ class slurm::config (
   Integer[0,1] $group_update_force = $slurm::group_update_force,
   Integer $group_update_time = $slurm::group_update_time,
   Integer[0,1] $job_file_append = $slurm::job_file_append,
-  Integer[0,1] $job_file_requeue = $slurm::job_file_requeue,
+  Integer[0,1] $job_requeue = $slurm::job_requeue,
   Integer[0,1] $job_submit_plugins = $slurm::job_submit_plugins,
   Integer[0,1] $kill_on_bad_exit = $slurm::kill_on_bad_exit,
   String $launch_type = $slurm::launch_type,
