@@ -152,7 +152,7 @@ SlurmdDebug=<%= @slurmd_loglevel %>
 #
 # COMPUTE NODES
 <% @compute_nodes.each do |name, node| -%>
-NodeName=<%= name -%> <% node.each do |key, value| -%><%= key -%>=<%= value -%> <% end %>
+NodeName=<%= name -%> <% node.each do |key, value| -%><% if key == 'RealMemory' -%><%= key -%>=<%= value.to_i -%> <% else -%><%= key -%>=<%= value -%> <% end -%><% end %>
 <% end -%>
 
 # Partitions

@@ -91,6 +91,8 @@ slurm::compute_nodes:
   "%{::fqdn}":
     CPUs: "%{::processorcount}"
     RealMemory: "%{::memorysize_mb}"
+    SocketsPerBoard: 1
+    ThreadsPerCore: 2
     State: UNKNOWN
 
 # Partitions
