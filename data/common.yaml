@@ -29,7 +29,7 @@ slurm::max_job_id: 999999
 slurm::group_update_force: 0
 slurm::group_update_time: 600
 slurm::job_file_append: 0
-slurm::job_file_requeue: 1
+slurm::job_requeue: 1
 slurm::job_submit_plugins: 1
 slurm::kill_on_bad_exit: 0
 slurm::launch_type: 'launch/slurm'
