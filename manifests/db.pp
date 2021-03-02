@@ -10,7 +10,7 @@ class slurm::db {
   $user        = $slurm::slurm_user
   $pidfile     = $slurm::slurmdbd_pidfile
   $db_host     = $slurm::db_host
-  $db_password = Sensitive($slurm::db_password)
+  $db_password = $slurm::db_password
   $db_user     = $slurm::db_user
 
   $debug_level = $slurm::slurmdbd_loglevel ? {
