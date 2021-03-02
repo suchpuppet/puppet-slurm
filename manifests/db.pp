@@ -7,6 +7,19 @@
 class slurm::db {
   include slurm
 
+  $user        = $slurm::slurm_user
+  $pidfile     = $slurm::slurmdbd_pidfile
+  $db_host     = $slurm::db_host
+  $db_password = Sensitive($slurm::db_password)
+  $db_user     = $slurm::db_user
+
+  $debug_level = $slurm::slurmdbd_loglevel ? {
+    'error' => 3,
+    'warn'  => 4,
+    'info'  => 6,
+    'debug' => 7,
+  }
+
   if $::slurm::manage_db == true {
     class { 'mysql::server':
       package_name            => 'mariadb-server',
@@ -16,11 +29,21 @@ class slurm::db {
       override_options        => $::slurm::db_override_options,
     }
 
-    mysql::db { 'slurm':
+    mysql::db { 'slurm_acct_db':
       user     => $::slurm::db_user,
       password => $::slurm::db_password,
       host     => $::slurm::db_host,
       grant    => ['ALL'],
     }
+  }
+
+  # Configure Slurm DB backend
+  file { '/etc/slrum-llnl/slurmdbd.conf':
+    ensure  => 'file',
+    owner   => $slurm::slurm_user,
+    group   => $slurm::slurm_user,
+    mode    => '0640',
+    content => template('slurm/slurmdbd.conf.erb'),
+    notify  => Class['slurm::service'],
   }
 }

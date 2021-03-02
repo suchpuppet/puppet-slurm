@@ -112,11 +112,11 @@ SelectTypeParameters=<%= @select_type_parameters %>
 #
 # LOGGING AND ACCOUNTING
 #AccountingStorageEnforce=0
-#AccountingStorageHost=
+AccountingStorageHost=<%= @db_host %>
 #AccountingStorageLoc=
 #AccountingStoragePass=
 #AccountingStoragePort=
-AccountingStorageType=accounting_storage/none
+AccountingStorageType=accounting_storage/slurmdbd
 #AccountingStorageUser=
 AccountingStoreJobComment=<%= @accounting_job_store_comment %>
 ClusterName=<% @cluster_name %>
